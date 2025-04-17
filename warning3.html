@@ -7,67 +7,42 @@
       margin: 0;
       height: 100vh;
       background: black;
-      overflow: hidden;
-      font-family: 'Arial', sans-serif;
-      position: relative;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
     }
-    .photo-collage {
-      width: 100%;
-      height: 80vh;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    .photos {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 90%;
+      margin: 0 auto;
     }
     .photo {
-      position: absolute;
-      max-height: 40vh;
+      max-height: 35vh;
       border-radius: 5px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+      transition: transform 0.3s;
     }
     .photo:hover {
       transform: scale(1.05);
-      z-index: 10;
-    }
-    .photo1 {
-      transform: rotate(-8deg);
-      top: 10%;
-      left: 5%;
-    }
-    .photo2 {
-      transform: rotate(5deg);
-      top: 5%;
-      right: 5%;
-    }
-    .photo3 {
-      transform: rotate(-5deg);
-      bottom: 15%;
-      left: 10%;
-    }
-    .photo4 {
-      transform: rotate(7deg);
-      bottom: 10%;
-      right: 8%;
     }
     .photo5 {
-      max-height: 50vh;
-      z-index: 5;
-      position: relative;
+      grid-column: span 2;
+      max-height: 45vh;
+      justify-self: center;
     }
     .music-button {
       margin-top: 30px;
       padding: 15px 30px;
       background: #ff0066;
       color: white;
-      text-decoration: none;
       border-radius: 50px;
+      text-decoration: none;
       font-weight: bold;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
     }
     .return-button {
       position: absolute;
@@ -84,11 +59,11 @@
 <body>
   <a href="index.html" class="return-button">← Back</a>
 
-  <div class="photo-collage">
-    <img class="photo photo1" src="Photo1.jpg" alt="Memory 1">
-    <img class="photo photo2" src="Photo2.jpg" alt="Memory 2">
-    <img class="photo photo3" src="Photo3.jpg" alt="Memory 3">
-    <img class="photo photo4" src="Photo4.jpg" alt="Memory 4">
+  <div class="photos">
+    <img class="photo" src="Photo1.jpg" alt="Memory 1" style="transform: rotate(-5deg)">
+    <img class="photo" src="Photo2.jpg" alt="Memory 2" style="transform: rotate(3deg)">
+    <img class="photo" src="Photo3.jpg" alt="Memory 3" style="transform: rotate(-2deg)">
+    <img class="photo" src="Photo4.jpg" alt="Memory 4" style="transform: rotate(4deg)">
     <img class="photo photo5" src="Photo5.jpg" alt="Special Memory">
   </div>
 
@@ -96,21 +71,16 @@
     🎵 Our Special Song 🎵
   </a>
 
-  <audio autoplay loop id="bgMusic">
-    <source src="Mzk.mp3" type="audio/mpeg">
-  </audio>
+  <audio autoplay loop id="bgMusic" src="Mzk.mp3"></audio>
 
   <script>
-    const bgMusic = document.getElementById('bgMusic');
-    // Try to autoplay (works after any click)
     document.addEventListener('click', () => {
-      bgMusic.play().catch(e => console.log("Autoplay blocked"));
+      document.getElementById('bgMusic').play().catch(e => console.log(e));
     }, { once: true });
-    bgMusic.volume = 0.3;
     
-    // Force show all photos (in case some don't load)
+    // Ensure all photos load
     document.querySelectorAll('.photo').forEach(img => {
-      img.style.display = 'block';
+      img.onerror = () => img.style.display = 'none';
     });
   </script>
 </body>
