@@ -5,11 +5,7 @@
   <style>
     body {
       margin: 0;
-      height: 100vh;
       background: black;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       font-family: Arial, sans-serif;
       color: white;
       text-align: center;
@@ -18,26 +14,39 @@
       box-sizing: border-box;
     }
 
-    .title {
-      font-size: 3rem;
+    .return-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      color: white;
+      background: #ff0066;
+      padding: 10px 20px;
+      border-radius: 50px;
+      text-decoration: none;
       font-weight: bold;
-      margin: 30px 0;
+      z-index: 100;
+    }
+
+    .title {
+      font-size: 3.5rem;
+      font-weight: bold;
+      margin: 40px 0 20px 0;
     }
 
     .photo-grid {
       position: relative;
       width: 100%;
-      max-width: 900px;
-      margin-bottom: 30px;
+      max-width: 1000px;
+      margin: 0 auto 40px auto;
     }
 
     .small-photo {
       position: absolute;
-      width: 200px;
+      width: 250px;
       height: auto;
-      border-radius: 10px;
+      border-radius: 12px;
       transform: rotate(var(--rot));
-      box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
     }
 
     .top-left {
@@ -62,17 +71,31 @@
 
     .center-photo {
       display: block;
-      width: 250px;
+      width: 320px;
       max-width: 90%;
-      border-radius: 12px;
-      margin: 180px auto 100px auto;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.8);
+      border-radius: 14px;
+      margin: 220px auto 40px auto;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.8);
       position: relative;
       z-index: 1;
+    }
+
+    .music-button {
+      padding: 15px 40px;
+      background: #ff0066;
+      color: white;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.3rem;
+      display: inline-block;
+      margin-bottom: 50px;
     }
   </style>
 </head>
 <body>
+
+  <a href="index.html" class="return-button">← Return</a>
 
   <div class="title">In Love With My Jupiter</div>
 
@@ -84,6 +107,10 @@
 
     <img class="center-photo" src="Photo5.jpg" alt="Special Memory">
   </div>
+
+  <a href="https://youtu.be/-9dtQzg7gDM" target="_blank" class="music-button">
+    🎵 OUR SPECIAL SONG 🎵
+  </a>
 
 </body>
 </html>
