@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>For My Lovely Jupiter</title>
+  <title>In Love With My Jupiter</title>
   <style>
     body {
       margin: 0;
@@ -12,76 +12,101 @@
       justify-content: center;
       align-items: center;
       font-family: Arial, sans-serif;
-      overflow: hidden;
+      color: white;
+      text-align: center;
+      overflow: auto;
+      padding: 20px;
+      box-sizing: border-box;
     }
-    .photos {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      max-width: 90%;
-      margin: 0 auto;
+    .poem {
+      margin-bottom: 30px;
+      line-height: 1.6;
     }
-    .photo {
-      max-height: 25vh; /* smaller */
+    .photo-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+      max-width: 100%;
+    }
+    .small-photo {
+      height: 120px;
       border-radius: 5px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-      transition: transform 0.3s;
+      transform: rotate(var(--rot));
+      box-shadow: 0 3px 10px rgba(0,0,0,0.5);
     }
-    .photo:hover {
-      transform: scale(1.05);
-    }
-    .photo5 {
-      grid-column: span 2;
-      max-height: 55vh; /* bigger */
-      justify-self: center;
+    .center-photo {
+      height: 200px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.7);
+      margin: 20px 0;
     }
     .music-button {
-      margin-top: 40px;
-      padding: 20px 40px; /* bigger button */
-      font-size: 1.2rem;
+      padding: 15px 40px;
       background: #ff0066;
       color: white;
       border-radius: 50px;
       text-decoration: none;
       font-weight: bold;
+      font-size: 1.2rem;
+      margin: 20px 0;
+      display: inline-block;
     }
     .return-button {
-      position: absolute;
+      position: fixed;
       top: 20px;
       left: 20px;
       color: white;
       background: #ff0066;
-      padding: 8px 15px;
-      border-radius: 20px;
+      padding: 10px 20px;
+      border-radius: 50px;
       text-decoration: none;
+      font-weight: bold;
+      z-index: 100;
     }
   </style>
 </head>
 <body>
-  <a href="index.html" class="return-button">← Back</a>
+  <a href="index.html" class="return-button">← Return</a>
 
-  <div class="photos">
-    <img class="photo" src="Photo1.jpg" alt="Memory 1" style="transform: rotate(-5deg)">
-    <img class="photo" src="Photo2.jpg" alt="Memory 2" style="transform: rotate(3deg)">
-    <img class="photo" src="Photo3.jpg" alt="Memory 3" style="transform: rotate(-2deg)">
-    <img class="photo" src="Photo4.jpg" alt="Memory 4" style="transform: rotate(4deg)">
-    <img class="photo photo5" src="Photo5.jpg" alt="Special Memory">
+  <div class="poem">
+    <h2>In Love With My Jupiter</h2>
+    <p>You make me feel like you make me dream,<br>
+    you prefer to.<br>
+    I hate you</p>
+    <p>17:04 2:025</p>
+    <h3>You Are Perfect</h3>
+    <h3>You Shaft up my life first!</h3>
   </div>
 
+  <div class="photo-container">
+    <img class="small-photo" src="Photo1.jpg" alt="Memory 1" style="--rot: -5deg">
+    <img class="small-photo" src="Photo2.jpg" alt="Memory 2" style="--rot: 3deg">
+    <img class="small-photo" src="Photo3.jpg" alt="Memory 3" style="--rot: -8deg">
+    <img class="small-photo" src="Photo4.jpg" alt="Memory 4" style="--rot: 5deg">
+  </div>
+
+  <img class="center-photo" src="Photo5.jpg" alt="Special Memory">
+
   <a href="https://youtu.be/-9dtQzg7gDM" target="_blank" class="music-button">
-    🎵 Our Special Song 🎵
+    🎵 OUR SPECIAL SONG 🎵
   </a>
 
   <audio autoplay loop id="bgMusic" src="Mzk.mp3"></audio>
 
   <script>
+    // Start music after interaction
     document.addEventListener('click', () => {
-      document.getElementById('bgMusic').play().catch(e => console.log(e));
+      const music = document.getElementById('bgMusic');
+      music.volume = 0.3;
+      music.play().catch(e => console.log("Playback failed:", e));
     }, { once: true });
-
-    document.querySelectorAll('.photo').forEach(img => {
-      img.onerror = () => img.style.display = 'none';
-    });
+    
+    // Ensure return button is always visible
+    window.onscroll = function() {
+      document.querySelector('.return-button').style.top = window.pageYOffset + 20 + 'px';
+    };
   </script>
 </body>
 </html>
