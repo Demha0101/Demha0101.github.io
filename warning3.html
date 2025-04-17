@@ -9,7 +9,7 @@
       background: black;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
       font-family: Arial, sans-serif;
       color: white;
@@ -18,41 +18,7 @@
       padding: 20px;
       box-sizing: border-box;
     }
-    .poem {
-      margin-bottom: 30px;
-      line-height: 1.6;
-    }
-    .photo-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      margin: 20px 0;
-      max-width: 100%;
-    }
-    .small-photo {
-      height: 120px;
-      border-radius: 5px;
-      transform: rotate(var(--rot));
-      box-shadow: 0 3px 10px rgba(0,0,0,0.5);
-    }
-    .center-photo {
-      height: 200px;
-      border-radius: 8px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.7);
-      margin: 20px 0;
-    }
-    .music-button {
-      padding: 15px 40px;
-      background: #ff0066;
-      color: white;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1.2rem;
-      margin: 20px 0;
-      display: inline-block;
-    }
+
     .return-button {
       position: fixed;
       top: 20px;
@@ -65,13 +31,96 @@
       font-weight: bold;
       z-index: 100;
     }
+
+    .photo-grid {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 40px auto 20px auto;
+    }
+
+    .small-photo {
+      position: absolute;
+      width: 120px;
+      height: auto;
+      border-radius: 8px;
+      transform: rotate(var(--rot));
+      box-shadow: 0 3px 10px rgba(0,0,0,0.5);
+    }
+
+    .top-left {
+      top: 0;
+      left: 0;
+    }
+
+    .top-right {
+      top: 0;
+      right: 0;
+    }
+
+    .bottom-left {
+      bottom: 0;
+      left: 0;
+    }
+
+    .bottom-right {
+      bottom: 0;
+      right: 0;
+    }
+
+    .center-photo {
+      display: block;
+      width: 100%;
+      max-width: 500px;
+      border-radius: 12px;
+      margin: 0 auto;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.7);
+      z-index: 1;
+      position: relative;
+    }
+
+    .title-over-photo {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .music-button {
+      padding: 15px 40px;
+      background: #ff0066;
+      color: white;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin: 25px 0;
+      display: inline-block;
+    }
+
+    .poem {
+      margin-top: 20px;
+      line-height: 1.6;
+      max-width: 800px;
+    }
   </style>
 </head>
 <body>
   <a href="index.html" class="return-button">← Return</a>
 
+  <div class="photo-grid">
+    <img class="small-photo top-left" src="Photo1.jpg" alt="Memory 1" style="--rot: -5deg;">
+    <img class="small-photo top-right" src="Photo2.jpg" alt="Memory 2" style="--rot: 3deg;">
+    <img class="small-photo bottom-left" src="Photo3.jpg" alt="Memory 3" style="--rot: -8deg;">
+    <img class="small-photo bottom-right" src="Photo4.jpg" alt="Memory 4" style="--rot: 5deg;">
+
+    <div class="title-over-photo">In Love With My Jupiter</div>
+    <img class="center-photo" src="Photo5.jpg" alt="Special Memory">
+    <a href="https://youtu.be/-9dtQzg7gDM" target="_blank" class="music-button">
+      🎵 OUR SPECIAL SONG 🎵
+    </a>
+  </div>
+
   <div class="poem">
-    <h2>In Love With My Jupiter</h2>
     <p>You make me feel like you make me dream,<br>
     you prefer to.<br>
     I hate you</p>
@@ -80,30 +129,15 @@
     <h3>You Shaft up my life first!</h3>
   </div>
 
-  <div class="photo-container">
-    <img class="small-photo" src="Photo1.jpg" alt="Memory 1" style="--rot: -5deg">
-    <img class="small-photo" src="Photo2.jpg" alt="Memory 2" style="--rot: 3deg">
-    <img class="small-photo" src="Photo3.jpg" alt="Memory 3" style="--rot: -8deg">
-    <img class="small-photo" src="Photo4.jpg" alt="Memory 4" style="--rot: 5deg">
-  </div>
-
-  <img class="center-photo" src="Photo5.jpg" alt="Special Memory">
-
-  <a href="https://youtu.be/-9dtQzg7gDM" target="_blank" class="music-button">
-    🎵 OUR SPECIAL SONG 🎵
-  </a>
-
   <audio autoplay loop id="bgMusic" src="Mzk.mp3"></audio>
 
   <script>
-    // Start music after interaction
     document.addEventListener('click', () => {
       const music = document.getElementById('bgMusic');
       music.volume = 0.3;
       music.play().catch(e => console.log("Playback failed:", e));
     }, { once: true });
-    
-    // Ensure return button is always visible
+
     window.onscroll = function() {
       document.querySelector('.return-button').style.top = window.pageYOffset + 20 + 'px';
     };
