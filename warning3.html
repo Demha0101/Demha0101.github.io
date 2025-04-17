@@ -9,114 +9,81 @@
       background: black;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
       font-family: Arial, sans-serif;
       color: white;
       text-align: center;
-      overflow: hidden;
+      overflow: auto;
+      padding: 20px;
+      box-sizing: border-box;
     }
-    .return-button {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      color: white;
-      background: #ff0066;
-      padding: 10px 20px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: bold;
-      z-index: 100;
-    }
+
     .title {
-      font-size: 2.5rem;
-      margin-bottom: 30px;
-      text-shadow: 0 0 10px #ff0066;
+      font-size: 3rem;
+      font-weight: bold;
+      margin: 30px 0;
     }
-    .photo-container {
+
+    .photo-grid {
       position: relative;
       width: 100%;
-      height: 60vh;
-      max-width: 800px;
+      max-width: 900px;
+      margin-bottom: 30px;
     }
-    .corner-photo {
+
+    .small-photo {
       position: absolute;
-      width: 180px;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 8px;
-      box-shadow: 0 0 15px rgba(255,0,102,0.5);
-    }
-    .photo1 {
-      top: 0;
-      left: 0;
-      transform: rotate(-8deg);
-    }
-    .photo2 {
-      top: 0;
-      right: 0;
-      transform: rotate(5deg);
-    }
-    .photo3 {
-      bottom: 0;
-      left: 0;
-      transform: rotate(-5deg);
-    }
-    .photo4 {
-      bottom: 0;
-      right: 0;
-      transform: rotate(8deg);
-    }
-    .center-photo {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 300px;
-      height: 300px;
-      object-fit: cover;
+      width: 200px;
+      height: auto;
       border-radius: 10px;
-      box-shadow: 0 0 25px #ff0066;
-      border: 3px solid #ff0066;
+      transform: rotate(var(--rot));
+      box-shadow: 0 5px 15px rgba(0,0,0,0.6);
     }
-    .music-button {
-      position: fixed;
-      bottom: 30px;
-      padding: 15px 40px;
-      background: #ff0066;
-      color: white;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1.2rem;
+
+    .top-left {
+      top: 0;
+      left: 0;
+    }
+
+    .top-right {
+      top: 0;
+      right: 0;
+    }
+
+    .bottom-left {
+      bottom: 0;
+      left: 0;
+    }
+
+    .bottom-right {
+      bottom: 0;
+      right: 0;
+    }
+
+    .center-photo {
+      display: block;
+      width: 250px;
+      max-width: 90%;
+      border-radius: 12px;
+      margin: 180px auto 100px auto;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.8);
+      position: relative;
+      z-index: 1;
     }
   </style>
 </head>
 <body>
-  <a href="index.html" class="return-button">← Return</a>
 
-  <h1 class="title">In Love With My Jupiter</h1>
+  <div class="title">In Love With My Jupiter</div>
 
-  <div class="photo-container">
-    <img class="corner-photo photo1" src="Photo1.jpg" alt="Memory 1">
-    <img class="corner-photo photo2" src="Photo2.jpg" alt="Memory 2">
-    <img class="corner-photo photo3" src="Photo3.jpg" alt="Memory 3">
-    <img class="corner-photo photo4" src="Photo4.jpg" alt="Memory 4">
+  <div class="photo-grid">
+    <img class="small-photo top-left" src="Photo1.jpg" alt="Memory 1" style="--rot: -5deg;">
+    <img class="small-photo top-right" src="Photo2.jpg" alt="Memory 2" style="--rot: 4deg;">
+    <img class="small-photo bottom-left" src="Photo3.jpg" alt="Memory 3" style="--rot: -6deg;">
+    <img class="small-photo bottom-right" src="Photo4.jpg" alt="Memory 4" style="--rot: 5deg;">
+
     <img class="center-photo" src="Photo5.jpg" alt="Special Memory">
   </div>
 
-  <a href="https://youtu.be/-9dtQzg7gDM" target="_blank" class="music-button">
-    🎵 OUR SPECIAL SONG 🎵
-  </a>
-
-  <audio autoplay loop id="bgMusic" src="Mzk.mp3"></audio>
-
-  <script>
-    document.addEventListener('click', () => {
-      const music = document.getElementById('bgMusic');
-      music.volume = 0.3;
-      music.play().catch(e => console.log("Playback failed:", e));
-    }, { once: true });
-  </script>
 </body>
 </html>
