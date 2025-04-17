@@ -6,17 +6,18 @@
     body {
       margin: 0;
       height: 100vh;
-      background-color: black;
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
+      background-color: black;
       position: relative;
+      flex-direction: column;
+      text-align: center;
     }
 
     video {
-      max-width: 90%;
-      max-height: 70vh;
+      max-width: 100%;
+      height: auto;
       border: 5px solid #ff69b4;
       border-radius: 15px;
       box-shadow: 0 0 20px rgba(255,105,180,0.5);
@@ -46,18 +47,19 @@
       border-radius: 20px;
       text-decoration: none;
       font-size: 0.9rem;
-      font-family: 'Segoe UI Emoji', 'Apple Color Emoji', sans-serif;
       box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+      font-family: 'Segoe UI Emoji', 'Apple Color Emoji', sans-serif;
     }
 
     .music-button {
+      display: inline-block;
       margin-top: 30px;
-      padding: 12px 25px;
+      padding: 15px 30px;
       background-color: #ff0066;
       color: white;
       text-decoration: none;
       border-radius: 50px;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       font-weight: bold;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
       transition: all 0.3s ease;
@@ -72,10 +74,9 @@
   </style>
 </head>
 <body>
+  <button onclick="history.back()" class="return-button">Return</button>
 
-  <a href="index.html" class="return-button">Return</a>
-
-  <video id="jupiVideo" playsinline>
+  <video id="jupiVideo" autoplay playsinline>
     <source src="Jupi.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
@@ -90,4 +91,19 @@
     const video = document.getElementById('jupiVideo');
     const volumeToggle = document.getElementById('volumeToggle');
 
-    // Set volume to
+    // Set initial volume and autoplay
+    video.volume = 0.5;
+
+    // Toggle mute/unmute
+    volumeToggle.addEventListener('click', () => {
+      if (video.muted) {
+        video.muted = false;
+        volumeToggle.textContent = '🔊';
+      } else {
+        video.muted = true;
+        volumeToggle.textContent = '🔇';
+      }
+    });
+  </script>
+</body>
+</html>
