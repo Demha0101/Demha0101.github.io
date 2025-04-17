@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Final Warning</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-image: repeating-linear-gradient(
+        45deg,
+        pink,
+        pink 20px,
+        white 20px,
+        white 40px
+      );
+      font-family: Arial, 'Segoe UI Emoji', 'Apple Color Emoji', sans-serif;
+      text-align: center;
+      position: relative;
+    }
+    h1 {
+      color: #990000;
+      font-size: 3rem;
+      font-family: 'Segoe UI Emoji', 'Apple Color Emoji', sans-serif;
+    }
+    .return-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: white;
+      background-color: #ff6699;
+      padding: 8px 15px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+      font-family: 'Segoe UI Emoji', 'Apple Color Emoji', sans-serif;
+    }
+    a.danger-button {
+      font-size: 1.4rem;
+      color: white;
+      background-color: #660000;
+      padding: 12px 25px;
+      text-decoration: none;
+      border-radius: 12px;
+      margin-top: 15px;
+      box-shadow: 3px 3px 12px rgba(0,0,0,0.3);
+      transition: background-color 0.3s ease;
+      font-weight: bold;
+      font-family: 'Segoe UI Emoji', 'Apple Color Emoji', sans-serif;
+    }
+    p {
+      font-family: 'Segoe UI Emoji', 'Apple Color Emoji', sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <button onclick="history.back()" class="return-button"> Return</button>
+  <h1> FINAL WARNING! </h1>
+  <p>You're really testing my patience here... </p>
+  <a class="danger-button" href="warning3.html"> Click For More </a>
+</body>
+</html>
