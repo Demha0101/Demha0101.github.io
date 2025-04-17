@@ -22,7 +22,7 @@
       margin: 0 auto;
     }
     .photo {
-      max-height: 35vh;
+      max-height: 25vh; /* smaller */
       border-radius: 5px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.5);
       transition: transform 0.3s;
@@ -32,12 +32,13 @@
     }
     .photo5 {
       grid-column: span 2;
-      max-height: 45vh;
+      max-height: 55vh; /* bigger */
       justify-self: center;
     }
     .music-button {
-      margin-top: 30px;
-      padding: 15px 30px;
+      margin-top: 40px;
+      padding: 20px 40px; /* bigger button */
+      font-size: 1.2rem;
       background: #ff0066;
       color: white;
       border-radius: 50px;
@@ -77,8 +78,7 @@
     document.addEventListener('click', () => {
       document.getElementById('bgMusic').play().catch(e => console.log(e));
     }, { once: true });
-    
-    // Ensure all photos load
+
     document.querySelectorAll('.photo').forEach(img => {
       img.onerror = () => img.style.display = 'none';
     });
