@@ -9,16 +9,13 @@
       background: black;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
+      justify-content: center;
       align-items: center;
       font-family: Arial, sans-serif;
       color: white;
       text-align: center;
-      overflow: auto;
-      padding: 20px;
-      box-sizing: border-box;
+      overflow: hidden;
     }
-
     .return-button {
       position: fixed;
       top: 20px;
@@ -31,61 +28,60 @@
       font-weight: bold;
       z-index: 100;
     }
-
-    .photo-grid {
-      position: relative;
-      width: 100%;
-      max-width: 800px;
-      margin: 40px auto 20px auto;
-    }
-
-    .small-photo {
-      position: absolute;
-      width: 120px;
-      height: auto;
-      border-radius: 8px;
-      transform: rotate(var(--rot));
-      box-shadow: 0 3px 10px rgba(0,0,0,0.5);
-    }
-
-    .top-left {
-      top: 0;
-      left: 0;
-    }
-
-    .top-right {
-      top: 0;
-      right: 0;
-    }
-
-    .bottom-left {
-      bottom: 0;
-      left: 0;
-    }
-
-    .bottom-right {
-      bottom: 0;
-      right: 0;
-    }
-
-    .center-photo {
-      display: block;
-      width: 100%;
-      max-width: 500px;
-      border-radius: 12px;
-      margin: 0 auto;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.7);
-      z-index: 1;
-      position: relative;
-    }
-
-    .title-over-photo {
+    .title {
       font-size: 2.5rem;
-      font-weight: bold;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
+      text-shadow: 0 0 10px #ff0066;
     }
-
+    .photo-container {
+      position: relative;
+      width: 100%;
+      height: 60vh;
+      max-width: 800px;
+    }
+    .corner-photo {
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(255,0,102,0.5);
+    }
+    .photo1 {
+      top: 0;
+      left: 0;
+      transform: rotate(-8deg);
+    }
+    .photo2 {
+      top: 0;
+      right: 0;
+      transform: rotate(5deg);
+    }
+    .photo3 {
+      bottom: 0;
+      left: 0;
+      transform: rotate(-5deg);
+    }
+    .photo4 {
+      bottom: 0;
+      right: 0;
+      transform: rotate(8deg);
+    }
+    .center-photo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 0 25px #ff0066;
+      border: 3px solid #ff0066;
+    }
     .music-button {
+      position: fixed;
+      bottom: 30px;
       padding: 15px 40px;
       background: #ff0066;
       color: white;
@@ -93,41 +89,25 @@
       text-decoration: none;
       font-weight: bold;
       font-size: 1.2rem;
-      margin: 25px 0;
-      display: inline-block;
-    }
-
-    .poem {
-      margin-top: 20px;
-      line-height: 1.6;
-      max-width: 800px;
     }
   </style>
 </head>
 <body>
   <a href="index.html" class="return-button">← Return</a>
 
-  <div class="photo-grid">
-    <img class="small-photo top-left" src="Photo1.jpg" alt="Memory 1" style="--rot: -5deg;">
-    <img class="small-photo top-right" src="Photo2.jpg" alt="Memory 2" style="--rot: 3deg;">
-    <img class="small-photo bottom-left" src="Photo3.jpg" alt="Memory 3" style="--rot: -8deg;">
-    <img class="small-photo bottom-right" src="Photo4.jpg" alt="Memory 4" style="--rot: 5deg;">
+  <h1 class="title">In Love With My Jupiter</h1>
 
-    <div class="title-over-photo">In Love With My Jupiter</div>
+  <div class="photo-container">
+    <img class="corner-photo photo1" src="Photo1.jpg" alt="Memory 1">
+    <img class="corner-photo photo2" src="Photo2.jpg" alt="Memory 2">
+    <img class="corner-photo photo3" src="Photo3.jpg" alt="Memory 3">
+    <img class="corner-photo photo4" src="Photo4.jpg" alt="Memory 4">
     <img class="center-photo" src="Photo5.jpg" alt="Special Memory">
-    <a href="https://youtu.be/-9dtQzg7gDM" target="_blank" class="music-button">
-      🎵 OUR SPECIAL SONG 🎵
-    </a>
   </div>
 
-  <div class="poem">
-    <p>You make me feel like you make me dream,<br>
-    you prefer to.<br>
-    I hate you</p>
-    <p>17:04 2:025</p>
-    <h3>You Are Perfect</h3>
-    <h3>You Shaft up my life first!</h3>
-  </div>
+  <a href="https://youtu.be/-9dtQzg7gDM" target="_blank" class="music-button">
+    🎵 OUR SPECIAL SONG 🎵
+  </a>
 
   <audio autoplay loop id="bgMusic" src="Mzk.mp3"></audio>
 
@@ -137,10 +117,6 @@
       music.volume = 0.3;
       music.play().catch(e => console.log("Playback failed:", e));
     }, { once: true });
-
-    window.onscroll = function() {
-      document.querySelector('.return-button').style.top = window.pageYOffset + 20 + 'px';
-    };
   </script>
 </body>
 </html>
