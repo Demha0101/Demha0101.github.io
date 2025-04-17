@@ -6,16 +6,17 @@
     body {
       margin: 0;
       height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       background-color: black;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       position: relative;
     }
 
     video {
-      max-width: 100%;
-      height: auto;
+      max-width: 90%;
+      max-height: 70vh;
       border: 5px solid #ff69b4;
       border-radius: 15px;
       box-shadow: 0 0 20px rgba(255,105,180,0.5);
@@ -34,33 +35,59 @@
       cursor: pointer;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
+
+    .return-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: white;
+      background-color: #ff6699;
+      padding: 8px 15px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-family: 'Segoe UI Emoji', 'Apple Color Emoji', sans-serif;
+      box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+    }
+
+    .music-button {
+      margin-top: 30px;
+      padding: 12px 25px;
+      background-color: #ff0066;
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      font-family: 'Segoe UI Emoji', 'Apple Color Emoji', sans-serif;
+    }
+
+    .music-button:hover {
+      background-color: #cc0052;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    }
   </style>
 </head>
 <body>
-  <video id="jupiVideo" autoplay playsinline>
+
+  <a href="index.html" class="return-button">Return</a>
+
+  <video id="jupiVideo" playsinline>
     <source src="Jupi.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
 
   <button id="volumeToggle">🔊</button>
 
+  <a href="https://youtu.be/-9dtQzg7gDM" target="_blank" class="music-button">
+    Our Special Song
+  </a>
+
   <script>
     const video = document.getElementById('jupiVideo');
     const volumeToggle = document.getElementById('volumeToggle');
 
-    // Set initial volume
-    video.volume = 0.5;
-
-    // Toggle mute/unmute
-    volumeToggle.addEventListener('click', () => {
-      if (video.muted) {
-        video.muted = false;
-        volumeToggle.textContent = '🔊';
-      } else {
-        video.muted = true;
-        volumeToggle.textContent = '🔇';
-      }
-    });
-  </script>
-</body>
-</html>
+    // Set volume to
