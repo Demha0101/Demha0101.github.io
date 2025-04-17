@@ -14,95 +14,47 @@
       flex-direction: column;
       text-align: center;
     }
-
     video {
-      max-width: 100%;
-      height: auto;
+      max-width: 90%;
+      max-height: 70vh;
       border: 5px solid #ff69b4;
       border-radius: 15px;
-      box-shadow: 0 0 20px rgba(255,105,180,0.5);
     }
-
-    #volumeToggle {
+    #playButton {
       position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 40px;
-      height: 40px;
-      background-color: white;
-      border: none;
-      border-radius: 50%;
-      font-size: 1.2rem;
-      cursor: pointer;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-
-    .return-button {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      color: white;
-      background-color: #ff6699;
-      padding: 8px 15px;
-      border-radius: 20px;
-      text-decoration: none;
-      font-size: 0.9rem;
-      box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
-      font-family: 'Segoe UI Emoji', 'Apple Color Emoji', sans-serif;
-    }
-
-    .music-button {
-      display: inline-block;
-      margin-top: 30px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       padding: 15px 30px;
-      background-color: #ff0066;
+      background: #ff0066;
       color: white;
-      text-decoration: none;
+      border: none;
       border-radius: 50px;
       font-size: 1.2rem;
-      font-weight: bold;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      transition: all 0.3s ease;
-      font-family: 'Segoe UI Emoji', 'Apple Color Emoji', sans-serif;
-    }
-
-    .music-button:hover {
-      background-color: #cc0052;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+      cursor: pointer;
+      z-index: 10;
     }
   </style>
 </head>
 <body>
-  <button onclick="history.back()" class="return-button">Return</button>
+  <button onclick="history.back()" class="return-button">← Return</button>
 
-  <video id="jupiVideo" autoplay playsinline>
-    <source src="Jupti.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
+  <!-- Video with poster (thumbnail) -->
+  <video id="jupiVideo" poster="preview.jpg" controls>
+    <source src="Jupti.mp4" type="video/mp4">
   </video>
 
-  <button id="volumeToggle">🔊</button>
-
-  <a href="https://youtu.be/-9dtQzg7gDM" target="_blank" class="music-button">
-    Our Special Song
-  </a>
+  <!-- Play Button (shown first) -->
+  <button id="playButton">▶ Play Video</button>
 
   <script>
     const video = document.getElementById('jupiVideo');
-    const volumeToggle = document.getElementById('volumeToggle');
+    const playButton = document.getElementById('playButton');
 
-    // Set initial volume and autoplay
-    video.volume = 0.5;
-
-    // Toggle mute/unmute
-    volumeToggle.addEventListener('click', () => {
-      if (video.muted) {
-        video.muted = false;
-        volumeToggle.textContent = '🔊';
-      } else {
-        video.muted = true;
-        volumeToggle.textContent = '🔇';
-      }
+    // Click to play (required for mobile)
+    playButton.addEventListener('click', () => {
+      video.play();
+      playButton.style.display = 'none';
     });
   </script>
 </body>
