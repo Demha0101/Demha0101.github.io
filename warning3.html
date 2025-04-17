@@ -9,13 +9,12 @@
       font-family: Arial, sans-serif;
       color: white;
       text-align: center;
-      overflow: auto;
-      padding: 20px;
+      padding: 40px 20px;
       box-sizing: border-box;
     }
 
     .return-button {
-      position: fixed;
+      position: absolute;
       top: 20px;
       left: 20px;
       color: white;
@@ -24,60 +23,35 @@
       border-radius: 50px;
       text-decoration: none;
       font-weight: bold;
-      z-index: 100;
     }
 
     .title {
-      font-size: 3.5rem;
-      font-weight: bold;
-      margin: 40px 0 20px 0;
+      font-size: 3rem;
+      margin: 60px 0 40px 0;
     }
 
     .photo-grid {
-      position: relative;
-      width: 100%;
-      max-width: 1000px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+      max-width: 800px;
       margin: 0 auto 40px auto;
     }
 
     .small-photo {
-      position: absolute;
-      width: 250px;
-      height: auto;
-      border-radius: 12px;
-      transform: rotate(var(--rot));
-      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
-    }
-
-    .top-left {
-      top: 0;
-      left: 0;
-    }
-
-    .top-right {
-      top: 0;
-      right: 0;
-    }
-
-    .bottom-left {
-      bottom: 0;
-      left: 0;
-    }
-
-    .bottom-right {
-      bottom: 0;
-      right: 0;
+      width: 300px;
+      border-radius: 15px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7);
     }
 
     .center-photo {
+      width: 360px;
+      border-radius: 20px;
+      margin: 40px auto 30px auto;
       display: block;
-      width: 320px;
-      max-width: 90%;
-      border-radius: 14px;
-      margin: 220px auto 40px auto;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.8);
-      position: relative;
-      z-index: 1;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
     }
 
     .music-button {
@@ -87,9 +61,8 @@
       border-radius: 50px;
       text-decoration: none;
       font-weight: bold;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       display: inline-block;
-      margin-bottom: 50px;
     }
   </style>
 </head>
@@ -100,17 +73,29 @@
   <div class="title">In Love With My Jupiter</div>
 
   <div class="photo-grid">
-    <img class="small-photo top-left" src="Photo1.jpg" alt="Memory 1" style="--rot: -5deg;">
-    <img class="small-photo top-right" src="Photo2.jpg" alt="Memory 2" style="--rot: 4deg;">
-    <img class="small-photo bottom-left" src="Photo3.jpg" alt="Memory 3" style="--rot: -6deg;">
-    <img class="small-photo bottom-right" src="Photo4.jpg" alt="Memory 4" style="--rot: 5deg;">
-
-    <img class="center-photo" src="Photo5.jpg" alt="Special Memory">
+    <img class="small-photo" src="Photo1.jpg" alt="Memory 1">
+    <img class="small-photo" src="Photo2.jpg" alt="Memory 2">
+    <img class="small-photo" src="Photo3.jpg" alt="Memory 3">
+    <img class="small-photo" src="Photo4.jpg" alt="Memory 4">
   </div>
+
+  <img class="center-photo" src="Photo5.jpg" alt="Special Memory">
 
   <a href="https://youtu.be/-9dtQzg7gDM" target="_blank" class="music-button">
     🎵 OUR SPECIAL SONG 🎵
   </a>
+
+  <!-- Background Music -->
+  <audio id="bgMusic" src="Mzk.mp3" autoplay loop></audio>
+
+  <script>
+    // Ensures music plays with some browsers requiring user interaction
+    document.addEventListener('click', () => {
+      const music = document.getElementById('bgMusic');
+      music.volume = 0.4;
+      music.play().catch(() => {});
+    }, { once: true });
+  </script>
 
 </body>
 </html>
